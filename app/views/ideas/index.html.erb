@@ -1,0 +1,25 @@
+<div>
+  <h1>Ideas</h1>
+  <section class="ideas">
+    <% @ideas && @ideas.each do |i| %>
+      <div class="idea-card">
+        <p>
+          Name: <%= link_to i.name, idea_path(i) %>
+        </p>
+        <p>
+          Description: <%= i.description %>
+        </p>
+        <p>
+          Priority: <%= i.priority %>
+        </p>
+        <p>
+          <%= link_to "Edit", edit_idea_path(i.id) %>
+          <%= link_to "Delete", idea_path(i), data: {turbo_method: :delete} %>
+        </p>
+      </div>
+    <% end %>
+  </section>
+  <section class="admin">
+    <%= link_to "Add Idea", new_idea_path %>
+  </section>
+</div>
